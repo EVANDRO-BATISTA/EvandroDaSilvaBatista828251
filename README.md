@@ -1,5 +1,3 @@
-# EvandroDaSilvaBatista828251
-
 # Registro Publico de Pets - Mato Grosso
 
 Sistema de registro publico de Pets e seus tutores do Estado de Mato Grosso.

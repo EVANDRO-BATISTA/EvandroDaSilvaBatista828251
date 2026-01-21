@@ -11,8 +11,7 @@ import type {
 } from './types'
 
 // Use local API by default, switch to public API by setting this environment variable
-// NEXT_PUBLIC_API_URL=https://pet-manager-api.gela.vip
-// const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL='https://pet-manager-api.gela.vip'
+// const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL='https://pet-manager-api.geia.vip'
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api'
 
