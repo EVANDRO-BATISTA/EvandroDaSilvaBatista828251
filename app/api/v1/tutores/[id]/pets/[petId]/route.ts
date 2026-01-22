@@ -31,7 +31,7 @@ export async function POST(
     return NextResponse.json({ message: 'Pet nao encontrado' }, { status: 404 })
   }
 
-  //Vincula o animal de estimação ao tutor
+  // Link pet to tutor
   mockDb.pets[petIndex].tutorId = tutorId
 
   return new NextResponse(null, { status: 204 })
@@ -60,7 +60,7 @@ export async function DELETE(
     return NextResponse.json({ message: 'Pet nao vinculado a este tutor' }, { status: 404 })
   }
 
-  //Desvincula o pet do tutor
+  // Unlink pet from tutor
   mockDb.pets[petIndex].tutorId = undefined
 
   return new NextResponse(null, { status: 204 })

@@ -12,7 +12,7 @@ export async function GET(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  //GET é público -não é necessária autenticação
+  // GET is public - no authentication required
   const { id } = await params
   const petId = parseInt(id)
   const pet = mockDb.pets.find(p => p.id === petId)
@@ -21,7 +21,7 @@ export async function GET(
     return NextResponse.json({ message: 'Pet nao encontrado' }, { status: 404 })
   }
 
-  //Inclui dados do tutor se vinculados
+  // Include tutor data if linked
   let tutor = undefined
   if (pet.tutorId) {
     tutor = mockDb.tutors.find(t => t.id === pet.tutorId)

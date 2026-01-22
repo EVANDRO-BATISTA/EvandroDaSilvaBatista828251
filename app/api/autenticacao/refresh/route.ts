@@ -21,10 +21,10 @@ export async function PUT(request: Request) {
       )
     }
 
-    //Remove o token antigo
+    // Remove old token
     mockDb.tokens.delete(token)
 
-    //Gera novo token
+    // Generate new token
     const newToken = generateToken()
     const expiresAt = Date.now() + 24 * 60 * 60 * 1000
 

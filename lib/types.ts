@@ -1,4 +1,4 @@
-//Tipos de animais de estimação
+// Pet Types
 export interface Pet {
   id: number
   nome: string
@@ -20,7 +20,7 @@ export interface PetUpdateInput extends PetCreateInput {
   id: number
 }
 
-//Tipos de Tutor
+// Tutor Types
 export interface Tutor {
   id: number
   nomeCompleto: string
@@ -40,7 +40,7 @@ export interface TutorUpdateInput extends TutorCreateInput {
   id: number
 }
 
-//Tipos de autenticação
+// Auth Types
 export interface LoginCredentials {
   usuario: string
   senha: string
@@ -58,7 +58,7 @@ export interface User {
   nome: string
 }
 
-//Tipos de paginação
+// Pagination Types
 export interface PaginatedResponse<T> {
   content: T[]
   totalPages: number
@@ -69,7 +69,7 @@ export interface PaginatedResponse<T> {
   last: boolean
 }
 
-//Tipos de resposta da API
+// API Response Types
 export interface ApiError {
   message: string
   status: number

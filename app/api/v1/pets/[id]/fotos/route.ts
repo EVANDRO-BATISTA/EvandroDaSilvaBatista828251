@@ -36,8 +36,8 @@ export async function POST(
       )
     }
 
-    //Em um aplicativo real, salvaríamos o arquivo no armazenamento
-    //Para simulação, geraremos um URL de espaço reservado
+    // In a real app, we would save the file to storage
+    // For mock, we'll generate a placeholder URL
     const photoUrl = `https://picsum.photos/seed/${petId}-${Date.now()}/400/400`
     
     mockDb.pets[petIndex] = {

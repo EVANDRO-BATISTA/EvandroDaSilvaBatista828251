@@ -9,7 +9,7 @@ function checkAuth(request: Request) {
 }
 
 export async function GET(request: Request) {
-  //GET é público -não é necessária autenticação
+  // GET is public - no authentication required
   const { searchParams } = new URL(request.url)
   const page = parseInt(searchParams.get('page') || '0')
   const size = parseInt(searchParams.get('size') || '10')

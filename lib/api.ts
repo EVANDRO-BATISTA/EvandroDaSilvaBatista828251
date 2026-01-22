@@ -10,10 +10,10 @@ import type {
   PaginatedResponse,
 } from './types'
 
-// Use local API by default, switch to public API by setting this environment variable
-// const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL='https://pet-manager-api.geia.vip'
-
+//Use API local por padrão, mude para API pública definindo esta variável de ambiente
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api'
+
+// const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL='https://pet-manager-api.geia.vip'
 
 class ApiClient {
   private token: string | null = null
@@ -50,41 +50,27 @@ class ApiClient {
       headers['Authorization'] = `Bearer ${token}`
     }
 
-    console.log('[❌ ERRO] API Request:', options.method || 'GET', `${API_BASE_URL}${endpoint}`)
-    console.log('[❌ ERRO] API Token present:', !!token)
-    if (options.body) {
-      console.log('[❌ ERRO] API Body:', options.body)
-    }
-
     const response = await fetch(`${API_BASE_URL}${endpoint}`, {
       ...options,
       headers,
     })
 
-    console.log('[❌ ERRO] API Request:', response.status)
-
     if (!response.ok) {
       if (response.status === 401) {
-        console.log('[❌ ERRO] API 401 - clearing token and redirecting')
         this.setToken(null)
-        if (typeof window !== 'undefined') {
-          window.location.href = '/login'
-        }
+        // Nao redireciona automaticamente - deixa a UI tratar o erro
       }
       const error = await response.json().catch(() => ({ message: 'Erro na requisição' }))
-      console.log('[❌ ERRO] API Error:', error)
       throw new Error(error.message || `HTTP error! status: ${response.status}`)
     }
 
-    //Lida com respostas vazias
+    // Handle empty responses
     const text = await response.text()
     if (!text) return {} as T
-    const data = JSON.parse(text)
-    console.log('[❌ ERRO] API Response data:', data)
-    return data
+    return JSON.parse(text)
   }
 
- //Endpoints de autenticação
+  // Auth endpoints
   async login(credentials: LoginCredentials): Promise<AuthResponse> {
     const response = await this.request<AuthResponse>('/autenticacao/login', {
       method: 'POST',
@@ -110,7 +96,7 @@ class ApiClient {
     this.setToken(null)
   }
 
-  // Endpoints Pet
+  // Pet endpoints
   async getPets(page = 0, size = 10, nome?: string): Promise<PaginatedResponse<Pet>> {
     const params = new URLSearchParams({
       page: page.toString(),
@@ -169,7 +155,7 @@ class ApiClient {
     return response.json()
   }
 
-  // Endpoints Tutor
+  // Tutor endpoints
   async getTutors(page = 0, size = 10): Promise<PaginatedResponse<Tutor>> {
     const params = new URLSearchParams({
       page: page.toString(),
@@ -225,7 +211,7 @@ class ApiClient {
     return response.json()
   }
 
-  // Vinculação Pet-Tutor
+  // Pet-Tutor linking
   async linkPetToTutor(tutorId: number, petId: number): Promise<void> {
     return this.request<void>(`/v1/tutores/${tutorId}/pets/${petId}`, {
       method: 'POST',

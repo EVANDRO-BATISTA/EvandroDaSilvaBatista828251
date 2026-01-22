@@ -1,6 +1,6 @@
 import type { Pet, Tutor, User } from './types'
 
-//Banco de dados simulado com dados iniciais
+// Simulated database with initial data
 export const mockDb = {
   users: [
     { id: 1, usuario: 'admin', senha: 'admin123', nome: 'Administrador' },
@@ -35,7 +35,7 @@ export const mockDb = {
   nextTutorId: 6,
 }
 
-//Funções auxiliares
+// Helper functions
 export function generateToken(): string {
   return 'mock_token_' + Math.random().toString(36).substring(2) + Date.now().toString(36)
 }
