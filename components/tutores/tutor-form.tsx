@@ -157,20 +157,22 @@ export function TutorForm({ tutor, isEditing = false }: TutorFormProps) {
                       alt="Preview"
                       fill
                       className="object-cover"
-                    />
-                    <button
-                      type="button"
-                      onClick={removePhoto}
-                      className="absolute top-1 right-1 p-1 rounded-full bg-destructive text-destructive-foreground hover:bg-destructive/90"
-                    >
-                      <X className="h-4 w-4" />
-                    </button>
+                    />                    
                   </>
                 ) : (
                   <div className="flex h-full w-full items-center justify-center bg-primary/10">
                     <User className="h-12 w-12 text-primary" />
                   </div>
                 )}
+              </div>
+              <div className="relative flex-shrink-0">
+                <button
+                  type="button"
+                  onClick={removePhoto}
+                  className="absolute top-1 right-5 p-1 rounded-full bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                >
+                  <X className="h-4 w-4" />
+                </button>
               </div>
               <div className="flex-1">
                 <input
