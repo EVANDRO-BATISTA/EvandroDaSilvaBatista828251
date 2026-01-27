@@ -157,7 +157,7 @@ export function TutorForm({ tutor, isEditing = false }: TutorFormProps) {
                       alt="Preview"
                       fill
                       className="object-cover"
-                    />                    
+                    />
                   </>
                 ) : (
                   <div className="flex h-full w-full items-center justify-center bg-primary/10">
@@ -195,6 +195,7 @@ export function TutorForm({ tutor, isEditing = false }: TutorFormProps) {
                   JPG, PNG ou GIF. Maximo 5MB.
                 </p>
               </div>
+              
             </div>
           </div>
 

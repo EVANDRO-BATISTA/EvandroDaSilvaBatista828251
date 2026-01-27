@@ -4,6 +4,8 @@ import { createContext, useContext, useEffect, useState, useCallback, type React
 import { api } from '@/lib/api'
 import type { LoginCredentials, User } from '@/lib/types'
 
+export const AUTH_ENABLED = true
+
 interface AuthContextType {
   isAuthenticated: boolean
   isLoading: boolean
@@ -14,8 +16,6 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
-
-export const AUTH_ENABLED = true
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   // Se AUTH_ENABLED = false, considera sempre autenticado

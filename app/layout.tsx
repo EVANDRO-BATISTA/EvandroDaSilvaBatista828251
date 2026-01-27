@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { AuthProvider } from '@/contexts/auth-context'
-import { Toaster } from '@/components/ui/sonner'
+import { Toaster } from '@/components/ui/toaster'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })

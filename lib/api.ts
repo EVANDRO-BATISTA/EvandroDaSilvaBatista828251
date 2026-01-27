@@ -10,7 +10,8 @@ import type {
   PaginatedResponse,
 } from './types'
 
-//Use API local por padrão, mude para API pública definindo esta variável de ambiente
+// Use local API by default, switch to public API by setting this environment variable
+// NEXT_PUBLIC_API_URL=https://pet-manager-api.gela.vip
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api'
 
 // const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL='https://pet-manager-api.geia.vip'
@@ -43,7 +44,7 @@ class ApiClient {
   ): Promise<T> {
     const token = this.getToken()
     const headers: HeadersInit = {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     }
 
     if (token) {
