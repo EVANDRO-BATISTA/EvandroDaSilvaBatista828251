@@ -5,8 +5,9 @@ import { usePathname } from 'next/navigation'
 import { useAuth } from '@/contexts/auth-context'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { PawPrint, Users, LogOut, LogIn, Menu, X } from 'lucide-react'
-import { useState } from 'react'
+import { PawPrint, Users, LogOut, LogIn, Menu, X, Sun, Moon } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { useTheme } from 'next-themes'
 import { AUTH_ENABLED } from '@/contexts/auth-context'
 import { LoginModal } from '@/components/login-modal'
 
@@ -20,6 +21,9 @@ export function Header() {
   const { isAuthenticated, logout } = useAuth()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [loginModalOpen, setLoginModalOpen] = useState(false)
+  const { theme, setTheme, resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
@@ -60,6 +64,19 @@ export function Header() {
 
         {AUTH_ENABLED && (
           <div className="hidden md:flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+              aria-label="Alternar tema"
+            >
+              {mounted ? (
+                resolvedTheme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />
+              ) : (
+                <Sun className="h-4 w-4 opacity-0" />
+              )}
+            </Button>
+
             {isAuthenticated ? (
               <Button variant="outline" onClick={logout} className="gap-2 bg-transparent">
                 <LogOut className="h-4 w-4" />
@@ -76,7 +93,7 @@ export function Header() {
               </Button>
             )}
           </div>
-        )}
+        )} 
 
         {/* Mobile Menu Button */}
         <Button
@@ -119,6 +136,22 @@ export function Header() {
             })}
             {AUTH_ENABLED && (
               <div className="border-t border-border pt-2 mt-2">
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start gap-2"
+                  onClick={() => {
+                    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
+                    setMobileMenuOpen(false)
+                  }}
+                >
+                  {mounted ? (
+                    resolvedTheme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />
+                  ) : (
+                    <Sun className="h-4 w-4 opacity-0" />
+                  )}
+                  Alternar tema
+                </Button>
+
                 {isAuthenticated ? (
                   <Button 
                     variant="outline" 

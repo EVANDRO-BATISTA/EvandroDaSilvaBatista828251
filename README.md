@@ -109,6 +109,12 @@ npm install
 npm run dev
 ```
 
+### Tema / Modo Escuro
+
+- Suporte a tema claro/escuro via `next-themes`. O `ThemeProvider` está configurado em `app/layout.tsx` com `attribute="class"` e `defaultTheme="system"`.
+- Há um botão de alternância no cabeçalho (ícone sol/lua) e uma opção **"Alternar tema"** no menu mobile.
+- As variáveis do tema ficam em `app/globals.css` (classe `.dark`). Para ajustar o visual do modo escuro, altere variáveis como `--background`, `--card`, `--popover`, `--foreground` e `--border`.
+
 ### Variaveis de Ambiente
 
 ```env
