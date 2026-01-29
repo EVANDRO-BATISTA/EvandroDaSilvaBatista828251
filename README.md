@@ -4,8 +4,8 @@ Sistema de registro publico de Pets e seus tutores do Estado de Mato Grosso.
 
 ## Dados do Candidato
 
-- **Nome:** [Evandro da Silva Batista]
-- **Vaga:** Desenvolvedor Frontend
+- **Nome:** Evandro da Silva Batista
+- **ANEXO II-B:** Projeto Desenvolvedor Front End
 - **Data:** Janeiro/2026
 
 ## Arquitetura do Projeto
